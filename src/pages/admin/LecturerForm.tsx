@@ -63,8 +63,8 @@ const LecturerForm: React.FC<LecturerFormProps> = ({
       chucVu: (value) => (value.trim() ? null : "Chức vụ là bắt buộc"),
       phongBan: (value) => (value.trim() ? null : "Phòng ban là bắt buộc"),
       hocVi: (value) => (value.trim() ? null : "Học vị là bắt buộc"),
-      chuyenMonDaoTao: (value) =>
-        value.trim() ? null : "Chuyên môn đào tạo là bắt buộc",
+      // chuyenMonDaoTao: (value) =>
+      //   value.trim() ? null : "Chuyên môn đào tạo là bắt buộc",
       ngaySinh: (value) => (value.trim() ? null : "Ngày sinh là bắt buộc"),
       soDienThoai: (value) => {
         if (!value.trim()) return "Số điện thoại là bắt buộc";
@@ -114,7 +114,7 @@ const LecturerForm: React.FC<LecturerFormProps> = ({
         form.setValues({
           chucDanh: lecturer.chucDanh,
           chucVu: lecturer.chucVu,
-          chuyenMonDaoTao: lecturer.chuyenMonDaoTao,
+          chuyenMonDaoTao: lecturer.chuyenMonDaoTao || "",
           email: lecturer.email,
           hoVaTen: lecturer.hoVaTen,
           hocVi: lecturer.hocVi,
@@ -212,7 +212,7 @@ const LecturerForm: React.FC<LecturerFormProps> = ({
                 <TextInput
                   label="Họ và tên"
                   placeholder="Nhập họ và tên"
-                  required
+                  withAsterisk
                   {...form.getInputProps("hoVaTen")}
                 />
               </Grid.Col>
@@ -221,7 +221,7 @@ const LecturerForm: React.FC<LecturerFormProps> = ({
                   label="Email"
                   placeholder="Nhập email"
                   type="email"
-                  required
+                  withAsterisk
                   {...form.getInputProps("email")}
                 />
               </Grid.Col>
@@ -232,7 +232,7 @@ const LecturerForm: React.FC<LecturerFormProps> = ({
                 <TextInput
                   label="Mã định danh"
                   placeholder="Nhập mã định danh"
-                  required
+                  withAsterisk
                   {...form.getInputProps("maDinhDanh")}
                 />
               </Grid.Col>
@@ -240,7 +240,7 @@ const LecturerForm: React.FC<LecturerFormProps> = ({
                 <TextInput
                   label="Số điện thoại"
                   placeholder="Nhập số điện thoại"
-                  required
+                  withAsterisk
                   {...form.getInputProps("soDienThoai")}
                 />
               </Grid.Col>
@@ -251,7 +251,7 @@ const LecturerForm: React.FC<LecturerFormProps> = ({
                 <TextInput
                   label="Chức danh"
                   placeholder="Nhập chức danh"
-                  required
+                  withAsterisk
                   {...form.getInputProps("chucDanh")}
                 />
               </Grid.Col>
@@ -259,7 +259,7 @@ const LecturerForm: React.FC<LecturerFormProps> = ({
                 <TextInput
                   label="Chức vụ"
                   placeholder="Nhập chức vụ"
-                  required
+                  withAsterisk
                   {...form.getInputProps("chucVu")}
                 />
               </Grid.Col>
@@ -270,7 +270,7 @@ const LecturerForm: React.FC<LecturerFormProps> = ({
                 <TextInput
                   label="Học vị"
                   placeholder="Nhập học vị"
-                  required
+                  withAsterisk
                   {...form.getInputProps("hocVi")}
                 />
               </Grid.Col>
@@ -278,7 +278,7 @@ const LecturerForm: React.FC<LecturerFormProps> = ({
                 <TextInput
                   label="Phòng ban"
                   placeholder="Nhập phòng ban"
-                  required
+                  withAsterisk
                   {...form.getInputProps("phongBan")}
                 />
               </Grid.Col>
@@ -289,7 +289,6 @@ const LecturerForm: React.FC<LecturerFormProps> = ({
                 <TextInput
                   label="Chuyên môn đào tạo"
                   placeholder="Nhập chuyên môn đào tạo"
-                  required
                   {...form.getInputProps("chuyenMonDaoTao")}
                 />
               </Grid.Col>
@@ -298,7 +297,7 @@ const LecturerForm: React.FC<LecturerFormProps> = ({
                   label="Ngày sinh"
                   placeholder="YYYY-MM-DD"
                   type="date"
-                  required
+                  withAsterisk
                   {...form.getInputProps("ngaySinh")}
                 />
               </Grid.Col>

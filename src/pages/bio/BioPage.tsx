@@ -145,10 +145,10 @@ const BioPage: React.FC = () => {
                 </Group>
               </Title>
               <Text c="dimmed">
-                Khám phá thông tin chi tiết về các giảng viên của chúng tôi
+                Khám phá thông tin về các giảng viên của chúng tôi
               </Text>
             </div>
-            <Paper p="md" withBorder>
+            {/* <Paper p="md" withBorder>
               <Stack align="center" gap="xs">
                 <Text size="xl" fw={700} c="blue">
                   {filteredLecturers.length}
@@ -157,7 +157,7 @@ const BioPage: React.FC = () => {
                   Giảng viên
                 </Text>
               </Stack>
-            </Paper>
+            </Paper> */}
           </Group>
         </Card>
 
@@ -237,6 +237,14 @@ const BioPage: React.FC = () => {
           </Stack>
         </Card> */}
 
+        <SegmentedControl
+          value={viewMode}
+          onChange={(value) => setViewMode(value as "grid" | "list")}
+          data={[
+            { label: "Lưới", value: "grid" },
+            { label: "Danh sách", value: "list" },
+          ]}
+        />
         {/* Error Alert */}
         {error && (
           <Alert

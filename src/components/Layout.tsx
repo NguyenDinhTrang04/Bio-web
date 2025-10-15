@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppShell,
   Burger,
@@ -9,6 +9,8 @@ import {
   Stack,
   Divider,
   Badge,
+  ActionIcon,
+  Image,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -18,6 +20,8 @@ import {
   IconHome,
   IconUserCircle,
   IconDatabase,
+  IconX,
+  IconMenu2,
 } from "@tabler/icons-react";
 
 interface LayoutProps {
@@ -26,6 +30,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [opened, { toggle }] = useDisclosure();
+  const [active, setActive] = useState(0);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -60,7 +65,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       navbar={{
         width: 280,
         breakpoint: "sm",
-        collapsed: { mobile: !opened },
+        collapsed: { mobile: !opened, desktop: !opened },
       }}
       padding="md"
     >
@@ -68,6 +73,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <AppShell.Header>
         <Group h="100%" px="md" justify="space-between">
           <Group>
+            <ActionIcon
+              onClick={toggle}
+              variant="subtle"
+              color="gray"
+              size="lg"
+              aria-label="Toggle navigation"
+            >
+              {opened ? <IconX size={20} /> : <IconMenu2 size={20} />}
+            </ActionIcon>
             <Burger
               opened={opened}
               onClick={toggle}
@@ -75,14 +89,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               size="sm"
             />
             <Group gap="xs">
-              <IconUserCircle size={32} color="blue" />
-              <Text size="xl" fw={700} c="blue">
-                Bio Page CNTT
+              {/* <IconUserCircle size={32} color="#F66600" /> */}
+              <Image src="/Logo.png" alt="Logo" h={50} w={50} fit="contain" />
+              <Text size="xl" fw={700} c="#F66600">
+                Khoa công nghệ thông tin
               </Text>
             </Group>
           </Group>
 
-          <Group visibleFrom="sm">
+          {/* <Group visibleFrom="sm">
             <Button
               variant="outline"
               onClick={() => navigate("/bio")}
@@ -96,7 +111,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             >
               Quản trị
             </Button>
-          </Group>
+          </Group> */}
         </Group>
       </AppShell.Header>
 
@@ -107,7 +122,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             Menu chính
           </Text>
 
-          {navigationItems.map((item) => (
+          {navigationItems.map((item, index) => (
             <NavLink
               key={item.path}
               leftSection={item.icon}
@@ -123,6 +138,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               onClick={() => {
                 navigate(item.path);
                 toggle(); // Close mobile menu
+                setActive(index);
               }}
             />
           ))}

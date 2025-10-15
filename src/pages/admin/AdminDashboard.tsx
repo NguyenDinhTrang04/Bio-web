@@ -277,6 +277,7 @@ const LecturerManager: React.FC = () => {
               <Button
                 leftSection={<IconSearch size={16} />}
                 onClick={handleSearch}
+                variant="line"
               >
                 Tìm kiếm
               </Button>

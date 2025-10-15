@@ -91,6 +91,7 @@ const HomePage: React.FC = () => {
         <div
           style={{
             background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+            // backgroundColor: "rgb(0, 53, 143, 1)",
             padding: "80px 0",
             color: "white",
           }}
@@ -98,10 +99,10 @@ const HomePage: React.FC = () => {
           <Container size="lg">
             <Stack align="center" gap="xl" ta="center">
               <Title order={1} size={48} fw={700}>
-                Hệ thống Bio Page
+                Hệ thống Bio Page giới thiệu khoa công nghệ thông tin
               </Title>
               <Title order={2} size={24} fw={400} c="gray.1">
-                Khoa Công nghệ thông tin
+                Khoa Công nghệ thông tin Trường Đại học Đại Nam (FIT DNU)
               </Title>
               <Text size="lg" maw={600} c="gray.2">
                 Khám phá thông tin chi tiết về đội ngũ giảng viên xuất sắc của
@@ -116,7 +117,7 @@ const HomePage: React.FC = () => {
                 >
                   Xem danh sách giảng viên
                 </Button>
-                <Button
+                {/* <Button
                   size="lg"
                   variant="outline"
                   color="white"
@@ -124,7 +125,7 @@ const HomePage: React.FC = () => {
                   leftSection={<IconDatabase size={20} />}
                 >
                   Quản trị hệ thống
-                </Button>
+                </Button> */}
               </Group>
             </Stack>
           </Container>
